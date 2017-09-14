@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="plugin" version="3.0" method="upgrade" group="vmpayment">
+    <name>Invoicebox Payment</name>
+    <creationDate>12.09.2017</creationDate>
+    <author>Invoicebox</author>
+    <authorEmail>p-support@invoicebox.ru</authorEmail>
+    <authorUrl>www.invoicebox.ru/ru/</authorUrl>
+    <copyright>www.invoicebox.ru/ru/</copyright>
+    <license></license>
+    <version>1.0.0</version>
+    <description><![CDATA[Модуль позволяет организовать оплату товаров в магазине через систему «ИнвойсБокс». Система «ИнвойсБокс» позволяет Интернет-магазину принимать оплату через популярные инструменты - банковские карты, системы Интернет-банка, электронные деньги, терминалы, кассы банков и счета мобильных телефонов. Оплата приходит на расчётный счёт компании или индивидуального предпринимателя. ]]></description>
+
+    <scriptfile>install.php</scriptfile>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.sql</file>
+        </sql>
+    </install>
+    
+    <languages folder="language">
+		<language tag="en-GB">en-GB.plg_vmpayment_invoicebox.ini</language>
+		<language tag="ru-RU">ru-RU.plg_vmpayment_invoicebox.ini</language>
+    </languages>
+    
+    <files>
+		<filename plugin="invoicebox">invoicebox.php</filename>
+		<filename>index.html</filename>
+        <folder>install</folder>
+        <folder>sql</folder>
+    </files>
+
+    
+    <vmconfig>
+        <fields name="params">
+	    	<fieldset name="payment"  addfieldpath="/administrator/components/com_virtuemart/fields">
+				<field	name="payment_logos" type="vmfiles" label="VMPAYMENT_INVOICEBOX_LOGOS"
+					description="VMPAYMENT_INVOICEBOX_LOGOS_DESC"
+					directory="/plugins/vmpayment/invoicebox"
+					default="invoicebox.png" hide_default="1" hide_none="1"
+					stripext="0"   exclude=".*\.(php|html|xml|wsdl)" />
+				<field type="text" name="itransfer_participant_id"  size="50" label="VMPAYMENT_INVOICEBOX_ID"
+			             default="" description="VMPAYMENT_INVOICEBOX_ID_DESC" />
+			    <field type="text" name="itransfer_participant_ident"  size="50" label="VMPAYMENT_INVOICEBOX_IDENT"
+			             default="" description="VMPAYMENT_INVOICEBOX_IDENT_DESC" />
+			             
+			    <field type="text" name="invoicebox_api_key"  size="50" label="VMPAYMENT_INVOICEBOX_SECRET"
+			             default="" description="VMPAYMENT_INVOICEBOX_SECRET_DESC" />
+				<field class="exp accelerated_onboarding" name="itransfer_testmode" type="list" default="0"
+                       label="VMPAYMENT_INVOICEBOX_TESTMODE"
+                       description="VMPAYMENT_INVOICEBOX_TESTMODE_DESC">
+                    <option value="0">COM_VIRTUEMART_NO</option>
+                    <option value="1">COM_VIRTUEMART_YES</option>
+                </field>
+				<field name="status_pending" type="vmorderstate" scope="com_virtuemart" default="P" label="VMPAYMENT_INVOICEBOX_STATUS_PENDING" description="VMPAYMENT_INVOICEBOX_STATUS_PENDING_DESC" />
+				<field name="status_success" type="vmorderstate" scope="com_virtuemart" default="C" label="VMPAYMENT_INVOICEBOX_STATUS_SUCCESS" description="VMPAYMENT_INVOICEBOX_STATUS_SUCCESS_DESC" />
+				<field name="status_canceled" type="vmorderstate" scope="com_virtuemart" default="X" label="VMPAYMENT_INVOICEBOX_STATUS_FAILED" description="VMPAYMENT_INVOICEBOX_STATUS_FAILED_DESC" />
+                <field name="payment_currency" type="vmacceptedcurrency" default="" label="VMPAYMENT_STANDARD_CURRENCY"
+                       description="VMPAYMENT_STANDARD_CURRENCY_TIP"/>
+
+		    </fieldset>
+            <fieldset name="restrictions" >
+                <field name="countries" multiple="true" type="vmcountries" scope="com_virtuemart" default=""
+                       label="VMPAYMENT_STANDARD_COUNTRIES" description="VMPAYMENT_STANDARD_COUNTRIES_TIP"/>
+                <field name="min_amount" type="text" label="VMPAYMENT_STANDARD_MIN_AMOUNT"
+                       description="VMPAYMENT_STANDARD_MIN_AMOUNT_TIP"/>
+                <field name="max_amount" type="text" label="VMPAYMENT_STANDARD_MAX_AMOUNT"
+                       description="VMPAYMENT_STANDARD_MAX_AMOUNT_TIP"/>
+            </fieldset>
+            <fieldset name="fee">
+                <field name="cost_per_transaction" type="text" label="VMPAYMENT_STANDARD_COST_PER_TRANSACTION"
+                       description="VMPAYMENT_STANDARD_COST_PER_TRANSACTION_TIP"/>
+                <field name="cost_percent_total" type="text" label="VMPAYMENT_STANDARD_COST_PERCENT_TOTAL"
+                       description="VMPAYMENT_STANDARD_COST_PERCENT_TOTAL_TIP"/>
+                <field name="tax_id" type="vmtaxes" scope="com_virtuemart" label="VMPAYMENT_STANDARD_TAX"
+                       description="VMPAYMENT_STANDARD_TAX_TIP"/>
+            </fieldset>
+	    </fields>
+    </vmconfig>
+</extension>
