@@ -3,7 +3,7 @@
 			<update>
 				<name>Invoicebox</name>
 				<description>Invoicebox</description>
-				<element>Invoicebox</element>
+				<element>invoicebox</element>
 				<type>plugin</type>
 				<version>1.0.0</version>
 				<infourl title="Invoicebox">hhttps://www.invoicebox.ru/ru/</infourl>
