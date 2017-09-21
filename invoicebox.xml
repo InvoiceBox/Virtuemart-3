@@ -79,6 +79,5 @@
 	    </fields>
     </vmconfig>
 <updateservers><server type="extension" priority="1" name="Invoicebox">https://raw.githubusercontent.com/InvoiceBox/Virtuemart-3/master/update.xml</server></updateservers>
-</extension>
     
 </extension>
