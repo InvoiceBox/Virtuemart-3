@@ -363,7 +363,7 @@ class plgVmPaymentInvoiceBox extends vmPSPlugin {
 			$testMode .
 			$method->invoicebox_api_key);
 			if ($sign == $sign_strA) {
-                if(totalInPaymentCurrency == $amount){
+                if($totalInPaymentCurrency == $amount){
 					$order['order_status'] = $method->status_success;
 					$order['virtuemart_order_id'] = $orderid;
 					$order['customer_notified'] = 0;

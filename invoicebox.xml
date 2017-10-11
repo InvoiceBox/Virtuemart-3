@@ -7,7 +7,7 @@
     <authorUrl>www.invoicebox.ru/ru/</authorUrl>
     <copyright>www.invoicebox.ru/ru/</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description><![CDATA[Модуль позволяет организовать оплату товаров в магазине через систему «ИнвойсБокс». Система «ИнвойсБокс» позволяет Интернет-магазину принимать оплату через популярные инструменты - банковские карты, системы Интернет-банка, электронные деньги, терминалы, кассы банков и счета мобильных телефонов. Оплата приходит на расчётный счёт компании или индивидуального предпринимателя. ]]></description>
 
     <scriptfile>install.php</scriptfile>
